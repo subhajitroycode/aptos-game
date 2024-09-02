@@ -91,6 +91,8 @@ const ConnectedView = () => {
           },
         };
         const response = await signAndSubmitTransaction(payload);
+        console.log(response);
+
         const resultData = await client.getAccountResource({
           accountAddress: account?.address,
           resourceType: `${moduleAddress}::${moduleName}::GameResult`,
