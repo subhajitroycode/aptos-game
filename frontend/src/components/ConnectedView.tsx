@@ -8,13 +8,16 @@ import Header from "./Header";
 import ScoreBoard from "./ScoreBoard";
 import ResultBox from "./ResultBox";
 
+// Environment variables for module configuration
 const moduleName = import.meta.env.VITE_MODULE_NAME;
 const moduleAddress = import.meta.env.VITE_MODULE_ADDRESS;
 
+// Initialize Aptos client for testnet
 const aptosConfig = new AptosConfig({ network: Network.TESTNET });
 const client = new Aptos(aptosConfig);
 
 const ConnectedView = () => {
+  // State variables for game logic and UI
   const [input, setInput] = useState<string>("");
   const [result, setResult] = useState<string>("");
   const [computerSelection, setComputerSelection] = useState<string>("");
@@ -27,6 +30,7 @@ const ConnectedView = () => {
   const moves = ["Rock", "Paper", "Scissors", "Lizard", "Spock"];
   const { connected, account, signAndSubmitTransaction } = useWallet();
 
+  // Fetch scores from the blockchain
   const fetchScores = async () => {
     if (!account) return;
     try {
@@ -44,12 +48,14 @@ const ConnectedView = () => {
     }
   };
 
+  // Fetch scores when connected and game is active
   useEffect(() => {
     if (connected && isActive) {
       fetchScores();
     }
   }, [connected, isActive]);
 
+  // Toggle game state (start/stop)
   const toggleActiveState = async () => {
     if (!account) return;
     if (!isActive) {
@@ -78,6 +84,7 @@ const ConnectedView = () => {
     setComputerSelection("");
   };
 
+  // Handle player move and submit transaction
   const handleMoveClick = async (move: string) => {
     setResult("");
     setComputerSelection("");
@@ -94,6 +101,7 @@ const ConnectedView = () => {
         const response = await signAndSubmitTransaction(payload);
         console.log(response);
 
+        // Fetch game result after move
         const resultData = await client.getAccountResource({
           accountAddress: account?.address,
           resourceType: `${moduleAddress}::${moduleName}::GameResult`,
@@ -110,6 +118,7 @@ const ConnectedView = () => {
     }
   };
 
+  // Render game UI
   return (
     <div className="connected-view">
       <Header />
@@ -120,6 +129,7 @@ const ConnectedView = () => {
         draws={scores.draws}
       />
       <div className="center-wrapper">
+        {/* Game start/stop button */}
         <button
           className={`toggle-button ${isActive && "active"}`}
           onClick={toggleActiveState}
@@ -127,7 +137,7 @@ const ConnectedView = () => {
           {isActive ? "Stop Game" : "Start Game"}
         </button>
         <div className="game-container">
-          {/* Your Move */}
+          {/* Player move selection */}
           <div className="game-wrapper">
             <div className="game-heading">
               <div className="game-move">{input || "select your move"}</div>
@@ -161,7 +171,7 @@ const ConnectedView = () => {
             </div>
           </div>
         </div>
-        {/* Game Result */}
+        {/* Game result display */}
         <ResultBox result={result} isActive={isActive} />
       </div>
     </div>
