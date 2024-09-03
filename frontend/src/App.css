@@ -1,6 +1,6 @@
 .App {
   height: 100vh;
-  background-color: #f0f0f0;
+  background-color: rgb(255, 233, 222);
   position: relative;
 }
 
@@ -56,15 +56,10 @@ header h1 span {
 
 .game-wrapper {
   width: 550px;
-  /* height: 200px; */
-  background-color: #fff;
+  background-color: rgb(246, 215, 201);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 20px;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
 }
 
 .game-heading {
@@ -72,14 +67,11 @@ header h1 span {
   color: #000;
   font-size: 20px;
   font-weight: bold;
-  /* width: 40%;
-  padding: 5px;
-  margin: 5px auto; */
   text-align: center;
 }
 
 .game-move {
-  background-color: #e0e0e0;
+  background-color: rgb(236, 194, 175);
   color: #000;
   font-size: 18px;
   padding: 20px;
@@ -176,9 +168,57 @@ td {
 }
 
 .not-connected-header {
-  height: inherit;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+}
+
+/* tablet screen */
+@media (width <= 1176px) {
+  .game-container {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (width <= 820px) {
+  header {
+    padding-top: 70px;
+  }
+
+  .game-button img {
+    width: 80px;
+  }
+
+  .avatar img {
+    width: 250px;
+  }
+}
+
+@media (width <= 768px) {
+  .App {
+    height: auto;
+  }
+}
+
+/* mobile screen */
+@media (width <= 480px) {
+  header {
+    padding-top: 7rem;
+  }
+
+  header h1 {
+    padding: 0 8px;
+  }
+
+  .game-wrapper {
+    width: 300px;
+  }
+
+  .result-box {
+    width: 300px;
+    margin-bottom: 20px;
+  }
 }

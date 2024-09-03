@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import Header from "./Header";
 import {
   InputTransactionData,
   useWallet,
 } from "@aptos-labs/wallet-adapter-react";
 import { Aptos, AptosConfig, Network } from "@aptos-labs/ts-sdk";
+import Header from "./Header";
 import ScoreBoard from "./ScoreBoard";
 import ResultBox from "./ResultBox";
 
