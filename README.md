@@ -5,8 +5,8 @@ Welcome to the Rock Paper Scissors Lizard Spock game built on the Aptos blockcha
 
 ## Quick Links
 
-- **Live Site**: [Play the game here](https://your-live-site-url.com)
-- **Video Demo**: [Watch how to play](https://your-video-demo-url.com)
+- **Live Site**: [Play the game here](https://aptos-game-subhajitroycode.netlify.app/)
+- **Video Demo**: [Watch how to play](https://x.com/subhajitroycode/status/1830996257541693820)
 - **Contract Address**: [`0x24520160f6fec0a0ecf2a522c4538f34f7bc37927d89387d75b40157be335624`](https://explorer.aptoslabs.com/account/0x24520160f6fec0a0ecf2a522c4538f34f7bc37927d89387d75b40157be335624?network=testnet)
 
 ## Game Overview
